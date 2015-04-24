@@ -131,5 +131,10 @@ namespace DoubleTerminal
         {
             Invoke(new MethodInvoker(delegate() { AppendText(Color.Blue, serialPort2.ReadExisting()); }));
         }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+        }
     }
 }
