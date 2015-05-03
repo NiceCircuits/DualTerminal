@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DoubleTerminal")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DualTerminal")]
+[assembly: AssemblyDescription("Dual serial port terminal")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DoubleTerminal")]
+[assembly: AssemblyCompany("nicecircuits.com")]
+[assembly: AssemblyProduct("DualTerminal")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

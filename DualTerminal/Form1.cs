@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 
 
-namespace DoubleTerminal
+namespace DualTerminal
 {
     public partial class Form1 : Form
     {
