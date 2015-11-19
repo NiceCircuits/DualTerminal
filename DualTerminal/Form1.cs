@@ -92,6 +92,7 @@ namespace DualTerminal
             {
                 serialPort1.PortName = toolStripComboBoxPort1.SelectedItem.ToString();
                 serialPort2.PortName = toolStripComboBoxPort2.SelectedItem.ToString();
+                serialPort1.BaudRate = Int32.Parse(toolStripComboBoxBaud.SelectedItem.ToString());
                 serialPort1.Open();
                 serialPort2.Open();
                 openToolStripMenuItem.Enabled = false;
