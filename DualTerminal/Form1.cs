@@ -28,17 +28,20 @@ namespace DualTerminal
          // Append text of the given color.
         private void AppendText(Color color, string text)
         {
-            int start = richTextBox1.TextLength;
-            richTextBox1.AppendText(text);
-            int end = richTextBox1.TextLength;
-            
-            // Textbox may transform chars, so (end-start) != text.Length
-            richTextBox1.Select(start, end - start);
+            foreach (char c in text.ToCharArray())
             {
                 richTextBox1.SelectionColor = color;
-                // could set box.SelectionBackColor, box.SelectionFont too.
+                if ((c >= ' ' && c <= '~') || c == '\n' || c == '\r' || c == '\t')
+                {
+                    richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont, FontStyle.Bold);
+                    richTextBox1.AppendText(c.ToString());
+                }
+                else
+                {
+                    richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont, FontStyle.Italic);
+                    richTextBox1.AppendText("{"+((int)c).ToString("X2")+"}");
+                }
             }
-            richTextBox1.SelectionLength = 0; // clear
         }
 
         private int refreshPorts()
@@ -93,6 +96,7 @@ namespace DualTerminal
                 serialPort1.PortName = toolStripComboBoxPort1.SelectedItem.ToString();
                 serialPort2.PortName = toolStripComboBoxPort2.SelectedItem.ToString();
                 serialPort1.BaudRate = Int32.Parse(toolStripComboBoxBaud.SelectedItem.ToString());
+                serialPort2.BaudRate = Int32.Parse(toolStripComboBoxBaud.SelectedItem.ToString());
                 serialPort1.Open();
                 serialPort2.Open();
                 openToolStripMenuItem.Enabled = false;
