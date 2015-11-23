@@ -22,5 +22,41 @@ namespace DualTerminal.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM1")]
+        public string port1 {
+            get {
+                return ((string)(this["port1"]));
+            }
+            set {
+                this["port1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM2")]
+        public string port2 {
+            get {
+                return ((string)(this["port2"]));
+            }
+            set {
+                this["port2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9600")]
+        public int baudrate {
+            get {
+                return ((int)(this["baudrate"]));
+            }
+            set {
+                this["baudrate"] = value;
+            }
+        }
     }
 }

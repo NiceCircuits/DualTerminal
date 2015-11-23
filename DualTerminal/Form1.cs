@@ -18,11 +18,14 @@ namespace DualTerminal
             InitializeComponent();
             toolStripComboBoxBaud.SelectedIndex = 4;
             int nPorts = refreshPorts();
-            if (nPorts >= 2)
-            {
-                toolStripComboBoxPort1.SelectedIndex = 0;
-                toolStripComboBoxPort2.SelectedIndex = 1;
-            }
+            //if (nPorts >= 2)
+            //{
+            //    toolStripComboBoxPort1.SelectedIndex = 0;
+            //    toolStripComboBoxPort2.SelectedIndex = 1;
+            //}
+            toolStripComboBoxPort1.Text = Properties.Settings.Default.port1;
+            toolStripComboBoxPort2.Text = Properties.Settings.Default.port2;
+            toolStripComboBoxBaud.Text = Properties.Settings.Default.baudrate.ToString();
         }
 
          // Append text of the given color.
@@ -93,10 +96,10 @@ namespace DualTerminal
         {
             try
             {
-                serialPort1.PortName = toolStripComboBoxPort1.SelectedItem.ToString();
-                serialPort2.PortName = toolStripComboBoxPort2.SelectedItem.ToString();
-                serialPort1.BaudRate = Int32.Parse(toolStripComboBoxBaud.SelectedItem.ToString());
-                serialPort2.BaudRate = Int32.Parse(toolStripComboBoxBaud.SelectedItem.ToString());
+                serialPort1.PortName = toolStripComboBoxPort1.Text;
+                serialPort2.PortName = toolStripComboBoxPort2.Text;
+                serialPort1.BaudRate = Int32.Parse(toolStripComboBoxBaud.Text);
+                serialPort2.BaudRate = Int32.Parse(toolStripComboBoxBaud.Text);
                 serialPort1.Open();
                 serialPort2.Open();
                 openToolStripMenuItem.Enabled = false;
@@ -130,6 +133,10 @@ namespace DualTerminal
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             closeToolStripMenuItem_Click();
+            Properties.Settings.Default.port1 = toolStripComboBoxPort1.Text;
+            Properties.Settings.Default.port2 = toolStripComboBoxPort2.Text;
+            Properties.Settings.Default.baudrate = Int32.Parse(toolStripComboBoxBaud.Text);
+            Properties.Settings.Default.Save();
         }
 
         private void serialPort2_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -141,5 +148,7 @@ namespace DualTerminal
         {
             richTextBox1.Clear();
         }
+
+ 
     }
 }
